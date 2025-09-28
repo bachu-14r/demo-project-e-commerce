@@ -128,6 +128,7 @@ func main() {
 		}
 		log.Println("Shutdown meter provider")
 	}()
+
 	openfeature.AddHooks(otelhooks.NewTracesHook())
 	err := openfeature.SetProvider(flagd.NewProvider())
 	if err != nil {
@@ -179,7 +180,6 @@ type productCatalog struct {
 }
 
 func readProductFiles() ([]*pb.Product, error) {
-
 	// find all .json files in the products directory
 	entries, err := os.ReadDir("./products")
 	if err != nil {
@@ -308,10 +308,3 @@ func (p *productCatalog) checkProductFailure(ctx context.Context, id string) boo
 	)
 	return failureEnabled
 }
-
-}
-
-
-
-
-
